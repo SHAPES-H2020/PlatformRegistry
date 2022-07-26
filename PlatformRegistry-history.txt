@@ -1,0 +1,62 @@
+25-07-2022
+-----------------------------------------------
+1) This release permits the insertion of  empty spaces in  resource name,resource description, location  searching criteria strings.
+
+
+  In eu.h2020.symbiote.pr.communication.rest.controllers SearchContoller.java, 
+  listResourcesInPredicate() controller 
+
+added:
+ /*
+         * Resource names
+         */
+        try {
+            System.out.println("Removing escape characters from resourceNames");
+            if (resourceNames != null) {
+                for (int i = 0; i < resourceNames.size(); i++) {
+                    String resourceName = resourceNames.get(i);
+                    resourceName = URLDecoder.decode(resourceName, "UTF-8");
+                    resourceNames.set(i, resourceName.replace("+", " "));
+                }
+
+            }
+        }catch(Exception ex){
+            System.out.println("Exception in Removing escape characters from resourceNames");
+        }
+
+        /*
+         * Resource Descriptions
+         */
+        try {
+            System.out.println("Removing escape characters from resourceDescriptions");
+            if (resourceDescriptions != null) {
+                for (int i = 0; i < resourceDescriptions.size(); i++) {
+                    String resourceDescription = resourceDescriptions.get(i);
+                    resourceDescription = URLDecoder.decode(resourceDescription, "UTF-8");
+                    resourceDescriptions.set(i, resourceDescription.replace("+", " "));
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("Exception in Removing escape characters from resourceDescriptions");
+        }
+
+        /*
+         * Location Name
+         */
+        try {
+            System.out.println("Removing escape characters from locationName");
+            if (locationName != null) {
+                for (int i = 0; i < locationName.size(); i++) {
+                    String location = locationName.get(i);
+                    location = URLDecoder.decode(location, "UTF-8");
+                    locationName.set(i, location.replace("+", " "));
+                }
+
+            }
+        }catch(Exception ex){
+            System.out.println("Exception in Removing escape characters from locationName");
+        }
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+

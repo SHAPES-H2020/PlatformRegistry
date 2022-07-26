@@ -1,0 +1,7 @@
+1)Remove the previews smart_new_platform_registry image
+>docker image rm -f new_platform_registry  
+
+2)To build the image call:
+>docker build -t new_platform__registry .
+
+3)Update the docker compose file with the new image. 
